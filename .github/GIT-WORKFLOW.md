@@ -1,7 +1,7 @@
-Git workflow for yii2-grid contributors
-=======================================
+Git workflow for yii2-number contributors
+=========================================
 
-So you want to contribute to yii2-grid? Great! But to increase the chances of your changes being accepted quickly, please
+So you want to contribute to yii2-number? Great! But to increase the chances of your changes being accepted quickly, please
 follow the following steps. If you are new to Git and GitHub, you might want to first check out [GitHub help](http://help.github.com/), [try Git](https://try.github.com)
 or learn something about [Git internal data model](http://nfarina.com/post/9868516270/git-is-simpler).
 
@@ -10,10 +10,10 @@ Setup the development environment
 
 Assuming you already have a yii2 development environment, carry out the following steps to create a development environment for the repo.
 
-### 1. [Fork](http://help.github.com/fork-a-repo/) the yii2-grid repository on GitHub and clone your fork to your development environment 
+### 1. [Fork](http://help.github.com/fork-a-repo/) the yii2-number repository on GitHub and clone your fork to your development environment 
 
 ```
-git clone git@github.com:YOUR-GITHUB-USERNAME/yii2-grid.git
+git clone git@github.com:YOUR-GITHUB-USERNAME/yii2-number.git
 ```
 
 If you have trouble setting up Git with GitHub in Linux, or are getting errors like "Permission Denied (publickey)",
@@ -21,21 +21,21 @@ then you must [setup your Git installation to work with GitHub](http://help.gith
 
 > Tip: if you're not fluent with Git, we recommend reading excellent free [Pro Git book](https://git-scm.com/book/en/v2).
 
-### 2. Add the main yii2-grid repository as an additional git remote called "upstream"
+### 2. Add the main yii2-number repository as an additional git remote called "upstream"
 
-Change to the directory where you cloned yii2-grid, normally, "yii2-grid". Then enter the following command:
+Change to the directory where you cloned yii2-number, normally, "yii2-number". Then enter the following command:
 
 ```
-git remote add upstream git://github.com/kartik-v/yii2-grid.git
+git remote add upstream git://github.com/kartik-v/yii2-number.git
 ```
 
 ### 3. Prepare the testing environment
 
-- You should have a working yii 2 development environment in which you have already installed `yii2-grid` and includes latest and updated `yii2-grid` fork from source.
+- You should have a working yii 2 development environment in which you have already installed `yii2-number` and includes latest and updated `yii2-number` fork from source.
 - Ensure you have the latest `dev-master` releases of all dependent extensions via your composer updates
-- Ensure you use the above cloned latest `yii2-grid` code in your testing environment
+- Ensure you use the above cloned latest `yii2-number` code in your testing environment
 
-**Now you have a working playground for hacking on yii2-grid.**
+**Now you have a working playground for hacking on yii2-number.**
 
 Working on bugs and features
 ----------------------------
@@ -53,7 +53,7 @@ review your suggestion, and provide appropriate feedback along the way.
 
 > For small changes or documentation issues or straightforward fixes, you don't need to create an issue, a pull request is enough in this case.
 
-### 2. Fetch the latest code from the main yii2-grid branch
+### 2. Fetch the latest code from the main yii2-number branch
 
 ```
 git fetch upstream
@@ -61,7 +61,7 @@ git fetch upstream
 
 You should start at this point for every new contribution to make sure you are working on the latest code.
 
-### 3. Create a new branch for your feature based on the current yii2-grid master branch
+### 3. Create a new branch for your feature based on the current yii2-number master branch
 
 > That's very important since you will not be able to submit more than one pull request from your account if you'll
   use master.
@@ -116,14 +116,14 @@ automatically link your commit with the ticket:
 git commit -m "A brief description of this change which fixes #999 goes here"
 ```
 
-### 7. Pull the latest yii2-grid code from upstream into your branch
+### 7. Pull the latest yii2-number code from upstream into your branch
 
 ```
 git pull upstream master
 ```
 
 This ensures you have the latest code in your branch before you open your pull request. If there are any merge conflicts,
-you should fix them now and commit the changes again. This ensures that it's easy for the yii2-grid team to merge your changes
+you should fix them now and commit the changes again. This ensures that it's easy for the yii2-number team to merge your changes
 with one click.
 
 ### 8. Having resolved any conflicts, push your code to GitHub
@@ -148,7 +148,7 @@ issue number.
 
 Someone will review your code, and you might be asked to make some changes, if so go to step #6 (you don't need to open
 another pull request if your current one is still open). If your code is accepted it will be merged into the main branch
-and become part of the next yii2-grid release. If not, don't be disheartened, different people need different features and yii2-grid
+and become part of the next yii2-number release. If not, don't be disheartened, different people need different features and yii2-number
 can't be everything to everyone, your code will still be available on GitHub as a reference for people who need it.
 
 ### 11. Cleaning it up
@@ -165,8 +165,8 @@ git push origin --delete 999-name-of-your-branch-goes-here
 ### Command overview (for advanced contributors)
 
 ```
-git clone git@github.com:YOUR-GITHUB-USERNAME/yii2-grid.git
-git remote add upstream git://github.com/kartik-v/yii2-grid.git
+git clone git@github.com:YOUR-GITHUB-USERNAME/yii2-number.git
+git remote add upstream git://github.com/kartik-v/yii2-number.git
 ```
 
 ```
