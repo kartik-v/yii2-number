@@ -1,0 +1,120 @@
+<?php
+
+/**
+ * @package   yii2-number
+ * @author    Kartik Visweswaran <kartikv2@gmail.com>
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2018
+ * @version   1.0.0
+ */
+
+namespace kartik\number;
+
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use kartik\base\InputWidget;
+
+/**
+ * Number control widget
+ *
+ * @author Kartik Visweswaran <kartikv2@gmail.com>
+ * @since 1.0
+ */
+class NumberControl extends InputWidget
+{
+    /**
+     * @var array masked input plugin options
+     */
+    public $maskedInputOptions = [];
+
+    /**
+     * @inheritdoc
+     */
+    public $pluginName = 'numberControl';
+
+    /**
+     * @var array the HTML attributes for the base model input that will be saved typically to database. The following
+     * special options are recognized:
+     * - `type`: _string_, whether to generate a 'hidden' or 'text' input. Defaults to 'hidden'.
+     * - `label`: _string_, any label to be placed before the input. Will be only displayed if 'type' is 'text'.
+     */
+    public $options = [];
+
+    /**
+     * @var array the HTML attributes for the displayed masked input
+     */
+    public $displayOptions = [];
+
+    /**
+     * @inheritdoc
+     */
+    public function run()
+    {
+        $this->initWidget();
+        $this->registerAssets();
+        echo $this->getDisplayInput() . "\n" . $this->getSaveInput();
+    }
+
+    /**
+     * Registers the needed assets
+     */
+    public function registerAssets()
+    {
+        $view = $this->getView();
+        NumberControlAsset::register($view);
+        $id = $this->options['id'];
+        $this->pluginOptions = [
+            'displayId' => $this->displayOptions['id'],
+            'maskedInputOptions' => $this->maskedInputOptions,
+        ];
+        $this->registerPlugin($this->pluginName, "jQuery('#{$id}')");
+    }
+
+    /**
+     * Initializes the widget
+     */
+    protected function initWidget()
+    {
+        if (!isset($this->displayOptions['id'])) {
+            $this->displayOptions['id'] = $this->options['id'] . '-disp';
+        }
+        if (!isset($this->displayOptions['class'])) {
+            $this->displayOptions['class'] = 'form-control';
+        }
+        $defaultOptions = [
+            'alias' => 'numeric',
+            'digits' => 2,
+            'groupSeparator' => ',',
+            'autoGroup' => true,
+            'autoUnmask' => true,
+            'unmaskAsNumber' => true,
+        ];
+        $this->maskedInputOptions = array_replace_recursive($defaultOptions, $this->maskedInputOptions);
+    }
+
+    /**
+     * Generates the display input.
+     *
+     * @return string
+     */
+    protected function getDisplayInput()
+    {
+        $name = ArrayHelper::getValue($this->displayOptions, 'name', $this->displayOptions['id']);
+        return Html::textInput($name, $this->value, $this->displayOptions);
+    }
+
+    /**
+     * Generates the save input.
+     *
+     * @return string
+     */
+    protected function getSaveInput()
+    {
+        $type = ArrayHelper::remove($this->options, 'type', 'hidden');
+        $out = $this->getInput($type . 'Input');
+        if ($type === 'text') {
+            $this->options['tabindex'] = 10000;
+            $out = ArrayHelper::remove($this->options, 'label', '') . $out;
+        }
+        return $out;
+    }
+}

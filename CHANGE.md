@@ -5,4 +5,4 @@ Change Log: `yii2-number`
 
 **Date:** _work in progress_
 
-- Update copyright year to current.
+- Initial release.
