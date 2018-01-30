@@ -2,7 +2,7 @@
 
 - [ ] I have searched for similar issues in both open and closed tickets and cannot find a duplicate.
 - [ ] The issue still exists against the latest `master` branch of yii2-number.
-- [ ] This is not an usage question. I confirm having gone through and read the [documentation](http://demos.krajee.com/number) and [demos](http://demos.krajee.com/number-demo).
+- [ ] This is not an usage question. I confirm having gone through and read the [documentation and demos](http://demos.krajee.com/number).
 - [ ] This is not a general programming / coding question. (Those should be directed to the [webtips Q & A forum](http://webtips.krajee.com/questions)).
 - [ ] I have attempted to find the simplest possible steps to reproduce the issue.
 - [ ] I have included a failing test as a pull request (Optional).
@@ -42,6 +42,6 @@ I was expecting...
 
 ## Isolating the problem
 
-- [ ] This bug happens [on the demos page](https://demos.krajee.com/number-demo)
+- [ ] This bug happens [on the docs and demos page](https://demos.krajee.com/number)
 - [ ] The bug happens consistently across all tested browsers
 - [ ] This bug happens when using yii2-number without other plugins.

@@ -1,8 +1,8 @@
 Change Log: `yii2-number`
 =========================
 
-## Version 1.0.0 (_under development_)
+## Version 1.0.0
 
-**Date:** _work in progress_
+**Date:** 30-Jan-2018
 
 - Initial release.

@@ -45,6 +45,11 @@ class NumberControl extends InputWidget
     public $displayOptions = [];
 
     /**
+     * @var array the HTML attributes for the container in which the hidden save input will be rendered
+     */
+    public $saveInputContainer = [];
+
+    /**
      * @inheritdoc
      */
     public function run()
@@ -80,6 +85,12 @@ class NumberControl extends InputWidget
         if (!isset($this->displayOptions['class'])) {
             $this->displayOptions['class'] = 'form-control';
         }
+        if (isset($this->disabled) && $this->disabled) {
+            $this->displayOptions['disabled'] = true;
+        }
+        if (isset($this->readonly) && $this->readonly) {
+            $this->displayOptions['readonly'] = true;
+        }
         $defaultOptions = [
             'alias' => 'numeric',
             'digits' => 2,
@@ -98,7 +109,7 @@ class NumberControl extends InputWidget
      */
     protected function getDisplayInput()
     {
-        $name = ArrayHelper::getValue($this->displayOptions, 'name', $this->displayOptions['id']);
+        $name = ArrayHelper::remove($this->displayOptions, 'name', $this->displayOptions['id']);
         return Html::textInput($name, $this->value, $this->displayOptions);
     }
 
@@ -114,7 +125,9 @@ class NumberControl extends InputWidget
         if ($type === 'text') {
             $this->options['tabindex'] = 10000;
             $out = ArrayHelper::remove($this->options, 'label', '') . $out;
+        } else {
+            Html::addCssStyle($this->saveInputContainer, 'display:none');
         }
-        return $out;
+        return Html::tag('div', $out, $this->saveInputContainer);
     }
 }
