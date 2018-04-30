@@ -1,6 +1,6 @@
 /*!
  * @package yii2-number
- * v1.0.0
+ * v1.0.1
  *
  * Krajee number control jQuery plugin
  *
@@ -41,7 +41,7 @@
         init: function () {
             var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave, opts = self.options.maskedInputOptions;
             $elDisp.off('.numberControl').on('change.numberControl blur.numberControl', function () {
-                var num = $elDisp.val();
+                var num = $elDisp.inputmask('unmaskedvalue');
                 $elSave.val(num).trigger('change');
             }).inputmask(opts);
         },
@@ -84,8 +84,7 @@
             'digits': 2,
             'groupSeparator': ',',
             'autoGroup': true,
-            'autoUnmask': true,
-            'unmaskAsNumber': true
+            'autoUnmask': false
         }
     };
 }));
