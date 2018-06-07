@@ -1,11 +1,17 @@
 Change Log: `yii2-number`
 =========================
 
-## Version 1.0.1
+## Version 1.0.2
 
 **Date:** 07-Jun-2018
 
+- Reorganize source code in `src` folder.
 - (bug #4): Correct source plugin incorrect unmasking for non standard `radixPoint`.
+
+## Version 1.0.1
+
+**Date:** 01-May-2018
+
 - (bug #3): Fix `val.replace` error due to inputmask auto unmask.
 
 ## Version 1.0.0
