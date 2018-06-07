@@ -41,7 +41,10 @@
         init: function () {
             var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave, opts = self.options.maskedInputOptions;
             $elDisp.off('.numberControl').on('change.numberControl blur.numberControl', function () {
-                var num = $elDisp.inputmask('unmaskedvalue');
+                var num = $elDisp.inputmask('unmaskedvalue'), radix = opts.radixPoint || '.';
+                if (radix !== '.') {
+                    num = (num + '').replace(radix, '.');
+                }
                 $elSave.val(num).trigger('change');
             }).inputmask(opts);
         },
