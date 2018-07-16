@@ -1,7 +1,13 @@
 Change Log: `yii2-number`
 =========================
 
-## Version 1.0.2
+## Version 1.0.3
+
+**Date:** 16-Jul-2018
+
+- (enh #5): Default `groupSeparator` and `radixPoint` from locale.
+
+## Version 1.0.3
 
 **Date:** 07-Jun-2018
 

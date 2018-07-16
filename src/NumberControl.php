@@ -4,7 +4,7 @@
  * @package   yii2-number
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2018
- * @version   1.0.2
+ * @version   1.0.3
  */
 
 namespace kartik\number;
@@ -91,10 +91,12 @@ class NumberControl extends InputWidget
         if (isset($this->readonly) && $this->readonly) {
             $this->displayOptions['readonly'] = true;
         }
+        $formatter = Yii::$app->formatter;
         $defaultOptions = [
             'alias' => 'numeric',
             'digits' => 2,
-            'groupSeparator' => ',',
+            'groupSeparator' => isset($formatter->thousandSeparator) ? $formatter->thousandSeparator : ',',
+            'radixPoint' => isset($formatter->decimalSeparator) ? $formatter->decimalSeparator : '.',
             'autoGroup' => true,
             'autoUnmask' => false
         ];

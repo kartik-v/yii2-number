@@ -1,6 +1,6 @@
 /*!
  * @package yii2-number
- * v1.0.2
+ * v1.0.3
  *
  * Krajee number control jQuery plugin
  *
