@@ -9,6 +9,7 @@
 
 namespace kartik\number;
 
+use yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use kartik\base\InputWidget;
