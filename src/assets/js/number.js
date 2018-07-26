@@ -82,12 +82,6 @@
 
     $.fn.numberControl.defaults = {
         displayId: '',
-        maskedInputOptions: {
-            'alias': 'numeric',
-            'digits': 2,
-            'groupSeparator': ',',
-            'autoGroup': true,
-            'autoUnmask': false
-        }
+        maskedInputOptions: {}
     };
 }));

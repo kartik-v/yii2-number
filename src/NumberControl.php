@@ -9,6 +9,7 @@
 
 namespace kartik\number;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use kartik\base\InputWidget;
@@ -17,7 +18,7 @@ use kartik\base\InputWidget;
  * Number control widget
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class NumberControl extends InputWidget
 {
@@ -98,7 +99,7 @@ class NumberControl extends InputWidget
             'groupSeparator' => isset($formatter->thousandSeparator) ? $formatter->thousandSeparator : ',',
             'radixPoint' => isset($formatter->decimalSeparator) ? $formatter->decimalSeparator : '.',
             'autoGroup' => true,
-            'autoUnmask' => false
+            'autoUnmask' => false,
         ];
         $this->maskedInputOptions = array_replace_recursive($defaultOptions, $this->maskedInputOptions);
     }
@@ -124,7 +125,9 @@ class NumberControl extends InputWidget
         $type = ArrayHelper::remove($this->options, 'type', 'hidden');
         $out = $this->getInput($type . 'Input');
         if ($type === 'text') {
-            $this->options['tabindex'] = 10000;
+            if (!isset($this->options['tabindex'])) {
+                $this->options['tabindex'] = 10000;
+            }
             $out = ArrayHelper::remove($this->options, 'label', '') . $out;
         } else {
             Html::addCssStyle($this->saveInputContainer, 'display:none');

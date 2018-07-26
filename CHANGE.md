@@ -3,11 +3,12 @@ Change Log: `yii2-number`
 
 ## Version 1.0.3
 
-**Date:** 16-Jul-2018
+**Date:** 26-Jul-2018
 
+- (bug #6, #7): Correct Yii namespace.
 - (enh #5): Default `groupSeparator` and `radixPoint` from locale.
 
-## Version 1.0.3
+## Version 1.0.2
 
 **Date:** 07-Jun-2018
 
