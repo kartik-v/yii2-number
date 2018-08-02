@@ -1,6 +1,12 @@
 Change Log: `yii2-number`
 =========================
 
+## Version 1.0.4 (_under development_)
+
+**Date:** _work-in-progress_
+
+- (enh #8): New property `displayAttribute` to allow read/write of masked format data to model.
+
 ## Version 1.0.3
 
 **Date:** 26-Jul-2018
