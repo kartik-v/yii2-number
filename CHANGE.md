@@ -5,6 +5,7 @@ Change Log: `yii2-number`
 
 **Date:** _work-in-progress_
 
+- (enh #9): Detect mask change on ENTER key press.
 - (enh #8): New property `displayAttribute` to allow read/write of masked format data to model.
 
 ## Version 1.0.3

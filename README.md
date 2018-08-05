@@ -15,8 +15,8 @@ A number control input for Yii2 Framework that uses the [jQuery input mask plugi
 
 Refer [detailed documentation and demos](http://demos.krajee.com/number).
 
-## Latest Release
-The latest version of the module is v1.0.3. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-number/blob/master/CHANGE.md) for details. 
+## Release Updates
+Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-number/blob/master/CHANGE.md) for updates and changes to various releases. 
 
 ### Install
 

@@ -1,6 +1,6 @@
 /*!
  * @package yii2-number
- * v1.0.3
+ * v1.0.4
  *
  * Krajee number control jQuery plugin
  *
@@ -39,8 +39,12 @@
     NumberControl.prototype = {
         constructor: NumberControl,
         init: function () {
-            var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave, opts = self.options.maskedInputOptions;
-            $elDisp.off('.numberControl').on('change.numberControl blur.numberControl', function () {
+            var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave,
+                opts = self.options.maskedInputOptions, NS = '.numberControl';
+             $elDisp.off(NS).on('change' + NS + ' blur' + NS + ' keypress' + NS, function (e) {
+                if (e.type === 'keypress' && e.keyCode != 13 && e.which != 13) {
+                    return;
+                }
                 var num = $elDisp.inputmask('unmaskedvalue'), radix = opts.radixPoint || '.';
                 if (radix !== '.') {
                     num = (num + '').replace(radix, '.');
