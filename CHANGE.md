@@ -1,10 +1,11 @@
 Change Log: `yii2-number`
 =========================
 
-## Version 1.0.4 (_under development_)
+## Version 1.0.4
 
-**Date:** _work-in-progress_
+**Date:** 09-Oct-2018
 
+- Update composer dependencies.
 - (enh #9): Detect mask change on ENTER key press.
 - (enh #8): New property `displayAttribute` to allow read/write of masked format data to model.
 
