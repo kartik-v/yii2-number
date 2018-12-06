@@ -1,6 +1,6 @@
 /*!
  * @package yii2-number
- * v1.0.4
+ * v1.0.5
  *
  * Krajee number control jQuery plugin
  *
@@ -41,15 +41,22 @@
         init: function () {
             var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave,
                 opts = self.options.maskedInputOptions, NS = '.numberControl';
-             $elDisp.off(NS).on('change' + NS + ' blur' + NS + ' keypress' + NS, function (e) {
+            var originalValue = $elDisp.inputmask('unmaskedvalue'), radixPre = opts.radixPoint || '.';
+            if (radixPre !== '.') {
+                originalValue = (originalValue + '').replace('.', radixPre);
+            }
+            $elDisp.val(originalValue);
+             $elDisp.off(NS).on('change' + NS + ' blur' + NS + ' keypress' + NS + ' keydown' + NS, function (e) {
                 if (e.type === 'keypress' && e.keyCode != 13 && e.which != 13) {
                     return;
                 }
-                var num = $elDisp.inputmask('unmaskedvalue'), radix = opts.radixPoint || '.';
-                if (radix !== '.') {
-                    num = (num + '').replace(radix, '.');
+                if (e.type !== 'keydown' || e.keyCode == 13) {
+                    var num = $elDisp.inputmask('unmaskedvalue'), radix = opts.radixPoint || '.';
+                    if (radix !== '.') {
+                        num = (num + '').replace(radix, '.');
+                    }
+                    $elSave.val(num).trigger('change');
                 }
-                $elSave.val(num).trigger('change');
             }).inputmask(opts);
         },
         destroy: function () {
