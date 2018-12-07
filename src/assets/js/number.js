@@ -39,18 +39,19 @@
     NumberControl.prototype = {
         constructor: NumberControl,
         init: function () {
-            var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave,
-                opts = self.options.maskedInputOptions, NS = '.numberControl';
-            var originalValue = $elDisp.inputmask('unmaskedvalue'), radixPre = opts.radixPoint || '.';
+            var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave, opts = self.options.maskedInputOptions,
+                NS = '.numberControl', events = ['change', 'blur', 'keypress', 'keydown'].join(NS + ' ') + NS,
+                originalValue = $elDisp.inputmask('unmaskedvalue'), radixPre = opts.radixPoint || '.';
             if (radixPre !== '.') {
                 originalValue = (originalValue + '').replace('.', radixPre);
             }
             $elDisp.val(originalValue);
-             $elDisp.off(NS).on('change' + NS + ' blur' + NS + ' keypress' + NS + ' keydown' + NS, function (e) {
-                if (e.type === 'keypress' && e.keyCode != 13 && e.which != 13) {
+            $elDisp.off(NS).on(events, function (e) {
+                var event = e.type, key = e.keyCode || e.which, enterKeyPressed = key && parseInt(key) === 13;
+                if (event === 'keypress' && !enterKeyPressed) {
                     return;
                 }
-                if (e.type !== 'keydown' || e.keyCode == 13) {
+                if (event !== 'keydown' || enterKeyPressed) {
                     var num = $elDisp.inputmask('unmaskedvalue'), radix = opts.radixPoint || '.';
                     if (radix !== '.') {
                         num = (num + '').replace(radix, '.');
@@ -62,7 +63,7 @@
         destroy: function () {
             var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave;
             $elDisp.off('.numberControl').removeData('inputmask');
-            $elSave.removeData('numberControl')
+            $elSave.removeData('numberControl');
         }
     };
 

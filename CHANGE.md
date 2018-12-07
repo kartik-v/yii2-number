@@ -1,6 +1,13 @@
 Change Log: `yii2-number`
 =========================
 
+## Version 1.0.5
+
+**Date:** 07-Dec-2018
+
+- (bug #10, #11)- Pressing the "enter" key does not change the input value.
+- Update README.
+
 ## Version 1.0.4
 
 **Date:** 09-Oct-2018
