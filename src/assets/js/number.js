@@ -32,6 +32,7 @@
         var self = this;
         self.$elSave = $(element);
         self.$elDisp = $('#' + options.displayId);
+        self.$form = self.$elDisp.closest('form'); //(Added by SADi)
         self.options = options;
         self.init();
     };
@@ -41,7 +42,8 @@
         init: function () {
             var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave, opts = self.options.maskedInputOptions,
                 NS = '.numberControl', events = ['change', 'blur', 'keypress', 'keydown'].join(NS + ' ') + NS,
-                originalValue = $elDisp.inputmask('unmaskedvalue'), radixPre = opts.radixPoint || '.';
+                originalValue = $elDisp.inputmask('unmaskedvalue'), radixPre = opts.radixPoint || '.',
+                $form = self.$form //(Added by SADi);
             if (radixPre !== '.') {
                 originalValue = (originalValue + '').replace('.', radixPre);
             }
@@ -59,6 +61,14 @@
                     $elSave.val(num).trigger('change');
                 }
             }).inputmask(opts);
+
+            // Fixed for Bootstrap 4: Show validation error messages (Added by SADi)
+            $form.on("afterValidateAttribute", function (event, attribute, messages) {
+                var hasError = messages.length !== 0;
+                if (attribute.id === $elSave.attr('id')) {
+                    $elDisp.attr("aria-invalid", hasError ? "true" : "false").attr('class', $elSave.attr('class'));
+                }
+            });
         },
         destroy: function () {
             var self = this, $elDisp = self.$elDisp, $elSave = self.$elSave;
