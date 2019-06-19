@@ -1,13 +1,13 @@
 /*!
  * @package yii2-number
- * v1.0.5
+ * v1.0.6
  *
  * Krajee number control jQuery plugin
  *
  * http://demos.krajee.com/number
  *
  * Author: Kartik Visweswaran
- * Copyright: 2018, Kartik Visweswaran, Krajee.com
+ * Copyright: 2018 - 2019, Kartik Visweswaran, Krajee.com
  */
 (function (factory) {
     "use strict";

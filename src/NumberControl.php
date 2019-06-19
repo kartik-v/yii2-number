@@ -3,8 +3,8 @@
 /**
  * @package   yii2-number
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2018
- * @version   1.0.5
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2018 - 2019
+ * @version   1.0.6
  */
 
 namespace kartik\number;
@@ -35,8 +35,9 @@ class NumberControl extends InputWidget
     /**
      * @var array the HTML attributes for the base model input that will be saved typically to database. The following
      * special options are recognized:
-     * - `type`: _string_, whether to generate a 'hidden' or 'text' input. Defaults to 'hidden'.
-     * - `label`: _string_, any label to be placed before the input. Will be only displayed if 'type' is 'text'.
+     * - `type`: _string_, HTML input type. Defaults to 'text'. Note that the `saveInputContainer` settings will control
+     *    the display of the saved input.
+     * - `label`: _string_, any label to be placed before the input.
      */
     public $options = [];
 
@@ -52,9 +53,10 @@ class NumberControl extends InputWidget
     public $displayOptions = [];
 
     /**
-     * @var array the HTML attributes for the container in which the hidden save input will be rendered
+     * @var array the HTML attributes for the container in which the saved input will be rendered. This container
+     * is set to hidden display by default via the `style` configuration.
      */
-    public $saveInputContainer = [];
+    public $saveInputContainer = ['style' => 'display:none'];
 
     /**
      * @inheritdoc
@@ -131,16 +133,17 @@ class NumberControl extends InputWidget
      */
     protected function getSaveInput()
     {
-        $type = ArrayHelper::remove($this->options, 'type', 'hidden');
-        $out = $this->getInput($type . 'Input');
-        if ($type === 'text') {
-            if (!isset($this->options['tabindex'])) {
-                $this->options['tabindex'] = 10000;
-            }
-            $out = ArrayHelper::remove($this->options, 'label', '') . $out;
-        } else {
-            Html::addCssStyle($this->saveInputContainer, 'display:none');
+        $type = ArrayHelper::remove($this->options, 'type', 'text');
+        if (!isset($this->options['tabindex'])) {
+            $this->options['tabindex'] = 10000;
         }
+        $label = ArrayHelper::remove($this->options, 'label', '') ;
+        if ($this->hasModel()) {
+            $out = Html::activeInput($type, $this->model, $this->attribute, $this->options);
+        } else {
+            $out = Html::input($type, $this->name, $this->value, $this->options);
+        }
+        $out = $label . $out;
         return Html::tag('div', $out, $this->saveInputContainer);
     }
 }

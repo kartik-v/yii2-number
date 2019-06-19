@@ -1,6 +1,13 @@
 Change Log: `yii2-number`
 =========================
 
+## Version 1.0.6
+
+**Date:** 19-Jun-2019
+
+- (enh #13): Set default save input type to text for correct form reset.
+- Add sponsorship configuration.
+
 ## Version 1.0.5
 
 **Date:** 07-Dec-2018
